@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Tap To Reveal</title>
+  </head>
+  <style media="screen">
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Helvetica", "Arial", sans-serif;
+    }
+
+    #example {
+      width: 400px;
+      height: 600px;
+      margin: 20px auto;
+      border: 2px solid #000;
+      -webkit-user-select: none;  /* Chrome all / Safari all */
+      -moz-user-select: none;     /* Firefox all */
+      -ms-user-select: none;      /* IE 10+ */
+      user-select: none;
+    }
+
+    .ttro-front {
+      background-color: #555;
+      color: #fff;
+      padding: 10px;
+      height: 50px;
+      cursor: pointer;
+      border-bottom: 1px solid #222;
+    }
+
+    .ttro-back {
+      border-bottom: 1px solid #222;
+    }
+
+    .ttro-item {
+      line-height: 50px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .ttro-item:active {
+      opacity: 0.9;
+    }
+
+    .ttro-item-0 {background-color: #613DC1;}
+    .ttro-item-1 {background-color: #542280;}
+    .ttro-item-2 {background-color: #2B3A67;}
+
+    .ttro-item-pokePerson {background-color: #613DC1;}
+    .ttro-item-callPerson {background-color: #542280;}
+    .ttro-item-messagePerson {background-color: #2B3A67;}
+  </style>
+  <body>
+    <div id="example"></div>
+    <script src="./example.compiled.js"></script>
+  </body>
+</html>
