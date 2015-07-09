@@ -1,4 +1,3 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var React = require('react');
 
 var styles = {
@@ -65,13 +64,13 @@ var Flippable = React.createClass({displayName: "Flippable",
     }
 
     return (
-      React.createElement("div", {style: styles.flipContainer},
-        React.createElement("div", {style: flipperStyle, ref: "flipper"},
-          React.createElement("div", {style: styles.front, className: "ttro-front", onClick: this.flip},
+      React.createElement("div", {style: styles.flipContainer}, 
+        React.createElement("div", {style: flipperStyle, ref: "flipper"}, 
+          React.createElement("div", {style: styles.front, className: "ttro-front", onClick: this.flip}, 
             this.props.children
-          ),
-          React.createElement("div", {style: styles.back, className: "ttro-back"},
-            React.createElement("div", {style: styles.optionsWrapper},
+          ), 
+          React.createElement("div", {style: styles.back, className: "ttro-back"}, 
+            React.createElement("div", {style: styles.optionsWrapper}, 
               this.props.options.map(function(item) {
                 var key, label;
                 switch (typeof item) {
@@ -86,10 +85,10 @@ var Flippable = React.createClass({displayName: "Flippable",
                     throw new Error('Each option should be a string or an object with "key" and "label" properties');
                 }
                 return (
-                  React.createElement("div", {style: styles.option,
-                    key: key,
-                    className: "ttro-item ttro-item-" + key,
-                    onClick: this.callback.bind(this, key)},
+                  React.createElement("div", {style: styles.option, 
+                    key: key, 
+                    className: "ttro-item ttro-item-" + key, 
+                    onClick: this.callback.bind(this, key)}, 
                     label
                   )
                 );
@@ -127,5 +126,3 @@ function clone(obj) {
 }
 
 module.exports = Flippable;
-
-},{"react":"react"}]},{},[1]);

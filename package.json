@@ -1,10 +1,10 @@
 {
   "name": "react-tap-to-reveal-options",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "React component to flip items in list and reveal options",
   "main": "index.js",
   "scripts": {
-    "build": "browserify -x react -t reactify src/index.js -o index.js",
+    "build": "jsx src/ ./",
     "buildExample": "browserify -t reactify example/example.js -o example/example.compiled.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,6 +26,7 @@
   "devDependencies": {
     "browserify": "^10.2.4",
     "react": "^0.13.3",
+    "react-tools": "^0.13.3",
     "reactify": "^1.1.1"
   }
 }
