@@ -1,6 +1,6 @@
 {
   "name": "react-tap-to-reveal-options",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React component to flip items in list and reveal options",
   "main": "index.js",
   "scripts": {
@@ -22,11 +22,9 @@
     "url": "https://github.com/enki-com/react-tap-to-reveal-options/issues"
   },
   "homepage": "https://github.com/enki-com/react-tap-to-reveal-options",
-  "dependencies": {
-    "react": "^0.13.3"
-  },
   "devDependencies": {
     "browserify": "^10.2.4",
+    "react": "^0.13.3",
     "reactify": "^1.1.1"
   }
 }

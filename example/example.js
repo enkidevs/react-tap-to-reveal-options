@@ -8,17 +8,17 @@ var DATA = [
 ];
 
 var optionsArray = ["Poke", "Call", "Message"];
-var optionsObject = {
-  pokePerson: "Poke",
-  callPerson: "Call",
-  messagePerson: "Message"
-};
+var optionsObject = [
+  {key: "pokePerson", label: "Poke"},
+  {key: "callPerson", label: "Call"},
+  {key: "messagePerson", label: "Message"}
+];
 
 var List = React.createClass({
   render: function() {
     return (
       <div>
-        <h2>Options Array</h2>
+        <h2>String options</h2>
         {DATA.map(function(item) {
           return (
             <Flippable key={item.name}
@@ -28,7 +28,7 @@ var List = React.createClass({
             </Flippable>
           );
         })}
-        <h2>Options object</h2>
+        <h2>Object options</h2>
         {DATA.map(function(item) {
           return (
             <Flippable key={item.name}

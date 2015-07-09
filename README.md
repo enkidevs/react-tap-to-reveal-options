@@ -3,6 +3,8 @@ React Tap To Reveal Options
 
 A simple react component intended for use on mobile.
 
+## [Demo](http://enki-com.github.io/react-tap-to-reveal-options/)
+
 ## Usage
 
 ```
@@ -15,11 +17,11 @@ var Flippable = require('react-tap-to-reveal-options');
 
 var options = ["One", "Two", "Three"];
 // or
-var options = {
-  first: "One",
-  second: "Two",
-  last: "Three",
-}
+var options = [
+  {label: "One", key: "first"},
+  {label: "Two", key: "second"},
+  {label: "Three", key: "last"}
+];
 
 <Flippable options={options} callback={cb}>
   <div>
@@ -32,7 +34,8 @@ var options = {
 
 function cb(selectedOption) {
   console.log(selectedOption);
-  //0|1|2 (index) if you passed an array or "first"|"second"|"last" if you passed an object
+  // "One" | "Two" | "Three" if you passed an array of strings
+  // "first" | "second" | "last" if you passed an array of objects
 }
 
 ```
@@ -57,9 +60,9 @@ function cb(selectedOption) {
 }
 
 /* Your styles for individual options, based on index if you passed an array */
-.ttro-item-0 {background-color: #613DC1;}
-.ttro-item-1 {background-color: #542280;}
-.ttro-item-2 {background-color: #2B3A67;}
+.ttro-item-One {background-color: #613DC1;}
+.ttro-item-Two {background-color: #542280;}
+.ttro-item-Three {background-color: #2B3A67;}
 
 /* Your styles for individual options, based on keys if you passed an object */
 .ttro-item-first {background-color: #613DC1;}

@@ -16,7 +16,7 @@ var styles = {
 
   front: {
   	zIndex: 2,
-  	transform: "rotateX(0deg)",
+  	transform: "rotate3d(1, 0, 0, 0deg)",
   	backfaceVisibility: "hidden",
   	top: 0,
   	left: 0,
@@ -24,7 +24,7 @@ var styles = {
   },
 
   back: {
-  	transform: "rotateX(180deg)",
+  	transform: "rotate3d(1, 0, 0, 180deg)",
   	backfaceVisibility: "hidden",
   	position: "absolute",
   	top: 0,
@@ -47,10 +47,7 @@ var styles = {
 var Flippable = React.createClass({
   propTypes: {
     callback: React.PropTypes.func.isRequired,
-    options: React.PropTypes.oneOfType([
-       React.PropTypes.array,
-       React.PropTypes.object
-    ]).isRequired
+    options: React.PropTypes.array.isRequired
   },
 
   getInitialState: function() {
@@ -62,16 +59,7 @@ var Flippable = React.createClass({
   render: function() {
     var flipperStyle = clone(styles.flipper);
     if (this.state.flipped) {
-      flipperStyle.transform = "rotateX(180deg)";
-    }
-
-    var options = {};
-    if (this.props.options instanceof Array) {
-      this.props.options.forEach(function(item, index) {
-        options[index] = item;
-      });
-    } else {
-      options = this.props.options;
+      flipperStyle.transform = "rotate3d(1, 0, 0, 180deg)";
     }
 
     return (
@@ -82,13 +70,25 @@ var Flippable = React.createClass({
           </div>
           <div style={styles.back} className="ttro-back">
             <div style={styles.optionsWrapper}>
-              {Object.keys(options).map(function(key) {
+              {this.props.options.map(function(item) {
+                var key, label;
+                switch (typeof item) {
+                  case 'string':
+                    key = label = item;
+                    break;
+                  case 'object':
+                    key = item.key;
+                    label = item.label;
+                    break;
+                  default:
+                    throw new Error('Each option should be a string or an object with "key" and "label" properties');
+                }
                 return (
                   <div style={styles.option}
                     key={key}
                     className={"ttro-item ttro-item-" + key}
                     onClick={this.callback.bind(this, key)}>
-                    {options[key]}
+                    {label}
                   </div>
                 );
               }.bind(this))}
