@@ -47,7 +47,8 @@ var styles = {
 var Flippable = React.createClass({
   propTypes: {
     callback: React.PropTypes.func.isRequired,
-    options: React.PropTypes.array.isRequired
+    options: React.PropTypes.array.isRequired,
+    resetSiblings: React.PropTypes.func
   },
 
   getInitialState: function() {
@@ -100,7 +101,14 @@ var Flippable = React.createClass({
   },
 
   flip: function() {
+    if (!this.state.flipped && this.props.resetSiblings) {
+      this.props.resetSiblings();
+    }
     this.setState({flipped: !this.state.flipped});
+  },
+
+  reset: function() {
+    this.setState(this.getInitialState());
   },
 
   callback: function(key) {

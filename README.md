@@ -69,3 +69,6 @@ function cb(selectedOption) {
 .ttro-item-second {background-color: #542280;}
 .ttro-item-last {background-color: #2B3A67;}
 ```
+
+### How to flip other items back to default state
+See the [example](https://github.com/enki-com/react-tap-to-reveal-options/blob/master/example/example.js).
