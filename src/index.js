@@ -39,7 +39,6 @@ var styles = {
   },
 
   option: {
-    display: "table-cell",
     textAlign: "center"
   }
 };
@@ -64,7 +63,7 @@ var Flippable = React.createClass({
     }
 
     return (
-      <div style={styles.flipContainer}>
+      <div style={styles.flipContainer} className={this.props.className}>
         <div style={flipperStyle} ref="flipper">
           <div style={styles.front} className="ttro-front" onClick={this.flip}>
             {this.props.children}
