@@ -39,7 +39,9 @@ var styles = {
   },
 
   option: {
-    textAlign: "center"
+    textAlign: "center",
+    display: "table-cell",
+    verticalAlign: "top"
   }
 };
 
