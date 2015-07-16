@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Tap To Reveal</title>
+  </head>
+  <style media="screen">
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Helvetica", "Arial", sans-serif;
+    }
+
+    #example {
+      width: 400px;
+      height: 600px;
+      margin: 20px auto;
+      border: 2px solid #000;
+      -webkit-user-select: none;  /* Chrome all / Safari all */
+      -moz-user-select: none;     /* Firefox all */
+      -ms-user-select: none;      /* IE 10+ */
+      user-select: none;
+    }
+
+    .ttro-front {
+      background-color: #555;
+      color: #fff;
+      padding: 10px;
+      height: 50px;
+      cursor: pointer;
+      border-bottom: 1px solid #222;
+    }
+
+    .ttro-back {
+      border-bottom: 1px solid #222;
+    }
+
+    .ttro-item {
+      line-height: 50px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .ttro-item:active {
+      opacity: 0.9;
+    }
+
+    .ttro-item-Poke {background-color: #613DC1;}
+    .ttro-item-Call {background-color: #542280;}
+    .ttro-item-Message {background-color: #2B3A67;}
+
+    .ttro-item-pokePerson {background-color: #613DC1;}
+    .ttro-item-callPerson {background-color: #542280;}
+    .ttro-item-messagePerson {background-color: #2B3A67;}
+  </style>
+  <body>
+    <a href="https://github.com/enki-com/react-tap-to-reveal-options"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+    <div id="example"></div>
+    <script src="./example.compiled.js"></script>
+  </body>
+</html>
