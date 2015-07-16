@@ -3,21 +3,27 @@ var React = require('react');
 var styles = {
   flipContainer: {
     perspective: "10000",
+    WebkitPerspective: "10000",
     position: "relative",
     width: "100%"
   },
 
   flipper: {
   	transition: "0.6s",
+  	WebkitTransition: "0.6s",
   	transformStyle: "preserve-3d",
+  	WebkitTransformStyle: "preserve-3d",
   	position: "relative",
-    transformOrigin: "100% 50%"
+    transformOrigin: "100% 50%",
+    WebkitTransformOrigin: "100% 50%"
   },
 
   front: {
   	zIndex: 2,
   	transform: "rotate3d(1, 0, 0, 0deg)",
+  	WebkitTransform: "rotate3d(1, 0, 0, 0deg)",
   	backfaceVisibility: "hidden",
+  	WebkitBackfaceVisibility: "hidden",
   	top: 0,
   	left: 0,
   	width: "100%",
@@ -25,7 +31,9 @@ var styles = {
 
   back: {
   	transform: "rotate3d(1, 0, 0, 180deg)",
+  	WebkitTransform: "rotate3d(1, 0, 0, 180deg)",
   	backfaceVisibility: "hidden",
+  	WebkitBackfaceVisibility: "hidden",
   	position: "absolute",
   	top: 0,
   	left: 0,
