@@ -23,7 +23,7 @@ var options = [
   {label: "Three", key: "last"}
 ];
 
-<Flippable options={options} callback={cb}>
+<Flippable options={options} callback={cb} selected={"first"}>
   <div>
     Your content for front side
   </div>

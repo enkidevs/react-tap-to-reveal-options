@@ -49,6 +49,7 @@ var Flippable = React.createClass({
   propTypes: {
     callback: React.PropTypes.func.isRequired,
     options: React.PropTypes.array.isRequired,
+    selected: React.PropTypes.any,
     resetSiblings: React.PropTypes.func
   },
 
@@ -85,10 +86,11 @@ var Flippable = React.createClass({
                   default:
                     throw new Error('Each option should be a string or an object with "key" and "label" properties');
                 }
+                var selected = key === this.props.selected ? " selected" : "";
                 return (
                   <div style={styles.option}
                     key={key}
-                    className={"ttro-item ttro-item-" + key}
+                    className={"ttro-item ttro-item-" + key + selected}
                     onClick={this.callback.bind(this, key)}>
                     {label}
                   </div>
