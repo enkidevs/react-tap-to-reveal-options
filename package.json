@@ -1,6 +1,6 @@
 {
   "name": "react-tap-to-reveal-options",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "React component to flip items in list and reveal options",
   "main": "index.js",
   "scripts": {

@@ -71,6 +71,7 @@ var Flippable = React.createClass({
     var flipperStyle = clone(styles.flipper);
     if (this.state.flipped) {
       flipperStyle.transform = "rotate3d(1, 0, 0, 180deg)";
+      flipperStyle.WebkitTransform = "rotate3d(1, 0, 0, 180deg)";
     }
 
     return (
