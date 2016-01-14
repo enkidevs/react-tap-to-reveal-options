@@ -1,8 +1,9 @@
 {
   "name": "react-tap-to-reveal-options",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React component to flip items in list and reveal options",
   "main": "index.js",
+  "files": ["index.js"],
   "scripts": {
     "build": "babel src -d ./",
     "buildExample": "browserify -t babelify example/example.js -o example/example.compiled.js",
