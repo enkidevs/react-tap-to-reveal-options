@@ -1,110 +1,120 @@
-var React = require('react');
+import React from 'react';
 
-var styles = {
+const styles = {
   flipContainer: {
-    perspective: "10000",
-    WebkitPerspective: "10000",
-    position: "relative",
-    width: "100%"
+    perspective: '10000',
+    WebkitPerspective: '10000',
+    position: 'relative',
+    width: '100%',
   },
 
   flipper: {
-  	transition: "0.6s",
-  	WebkitTransition: "0.6s",
-  	transformStyle: "preserve-3d",
-  	WebkitTransformStyle: "preserve-3d",
-  	position: "relative",
-    transformOrigin: "100% 50%",
-    WebkitTransformOrigin: "100% 50%"
+  	transition: '0.6s',
+  	WebkitTransition: '0.6s',
+  	transformStyle: 'preserve-3d',
+  	WebkitTransformStyle: 'preserve-3d',
+  	position: 'relative',
+    transformOrigin: '100% 50%',
+    WebkitTransformOrigin: '100% 50%',
   },
 
   front: {
   	zIndex: 2,
-  	transform: "rotate3d(1, 0, 0, 0deg)",
-  	WebkitTransform: "rotate3d(1, 0, 0, 0deg)",
-  	backfaceVisibility: "hidden",
-  	WebkitBackfaceVisibility: "hidden",
+  	transform: 'rotate3d(1, 0, 0, 0deg)',
+  	WebkitTransform: 'rotate3d(1, 0, 0, 0deg)',
+  	backfaceVisibility: 'hidden',
+  	WebkitBackfaceVisibility: 'hidden',
   	top: 0,
   	left: 0,
-  	width: "100%",
+  	width: '100%',
   },
 
   back: {
-  	transform: "rotate3d(1, 0, 0, 180deg)",
-  	WebkitTransform: "rotate3d(1, 0, 0, 180deg)",
-  	backfaceVisibility: "hidden",
-  	WebkitBackfaceVisibility: "hidden",
-  	position: "absolute",
+  	transform: 'rotate3d(1, 0, 0, 180deg)',
+  	WebkitTransform: 'rotate3d(1, 0, 0, 180deg)',
+  	backfaceVisibility: 'hidden',
+  	WebkitBackfaceVisibility: 'hidden',
+  	position: 'absolute',
   	top: 0,
   	left: 0,
-  	width: "100%",
+  	width: '100%',
   },
 
   optionsWrapper: {
-    display: "table",
-    tableLayout: "fixed",
-    width: "100%"
+    display: 'table',
+    tableLayout: 'fixed',
+    width: '100%'
   },
 
   option: {
-    textAlign: "center",
-    display: "table-cell",
-    verticalAlign: "top"
+    textAlign: 'center',
+    display: 'table-cell',
+    verticalAlign: 'top'
   }
 };
 
-var Flippable = React.createClass({
+const Flippable = React.createClass({
   propTypes: {
-    callback: React.PropTypes.func.isRequired,
+    onSelect: React.PropTypes.func,
     options: React.PropTypes.array.isRequired,
-    selected: React.PropTypes.any,
-    resetSiblings: React.PropTypes.func
+    selected: React.PropTypes.string,
+    onFlip: React.PropTypes.func,
+    children: React.PropTypes.node,
   },
 
-  getInitialState: function() {
+  getDefaultProps() {
     return {
-      flipped: false
+      onSelect: () => {},
+      onFlip: () => {},
     };
   },
 
-  render: function() {
-    var flipperStyle = clone(styles.flipper);
+  getInitialState() {
+    return {
+      flipped: false,
+    };
+  },
+
+  render() {
+    const {style, onSelect, onFlip, options, selected, ...rest} = this.props;
+    const flipperStyle = {...styles.flipper};
     if (this.state.flipped) {
-      flipperStyle.transform = "rotate3d(1, 0, 0, 180deg)";
-      flipperStyle.WebkitTransform = "rotate3d(1, 0, 0, 180deg)";
+      flipperStyle.transform = 'rotate3d(1, 0, 0, 180deg)';
+      flipperStyle.WebkitTransform = 'rotate3d(1, 0, 0, 180deg)';
     }
 
     return (
-      <div style={styles.flipContainer} className={this.props.className}>
+      <div style={{...styles.flipContainer, ...style}} {...rest}>
         <div style={flipperStyle} ref="flipper">
           <div style={styles.front} className="ttro-front" onClick={this.flip}>
             {this.props.children}
           </div>
           <div style={styles.back} className="ttro-back">
             <div style={styles.optionsWrapper}>
-              {this.props.options.map(function(item) {
-                var key, label;
+              {this.props.options.map((item) => {
+                let key;
+                let label;
                 switch (typeof item) {
-                  case 'string':
-                    key = label = item;
-                    break;
-                  case 'object':
-                    key = item.key;
-                    label = item.label;
-                    break;
-                  default:
-                    throw new Error('Each option should be a string or an object with "key" and "label" properties');
+                case 'string':
+                  key = label = item;
+                  break;
+                case 'object':
+                  key = item.key;
+                  label = item.label;
+                  break;
+                default:
+                  throw new Error('Each option should be a string or an object with "key" and "label" properties');
                 }
-                var selected = key === this.props.selected ? " selected" : "";
+                const selected = key === this.props.selected ? ' selected' : '';
                 return (
                   <div style={styles.option}
                     key={key}
-                    className={"ttro-item ttro-item-" + key + selected}
-                    onClick={this.callback.bind(this, key)}>
+                    className={'ttro-item ttro-item-' + key + selected}
+                    onClick={() => this.handleSelect(key)} >
                     {label}
                   </div>
                 );
-              }.bind(this))}
+              })}
             </div>
           </div>
         </div>
@@ -112,29 +122,23 @@ var Flippable = React.createClass({
     );
   },
 
-  flip: function() {
-    if (!this.state.flipped && this.props.resetSiblings) {
-      this.props.resetSiblings();
+  flip() {
+    if (!this.state.flipped) {
+      this.props.onFlip();
     }
     this.setState({flipped: !this.state.flipped});
   },
 
-  reset: function() {
-    this.setState(this.getInitialState());
+  reset() {
+    this.setState({
+      flipped: false,
+    });
   },
 
-  callback: function(key) {
+  handleSelect(key) {
     this.flip();
-    this.props.callback(key);
+    this.props.onSelect(key);
   }
 });
-
-function clone(obj) {
-  var copy = {};
-  for (var key in obj) {
-    copy[key] = obj[key];
-  }
-  return copy;
-}
 
 module.exports = Flippable;

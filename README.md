@@ -3,7 +3,7 @@ React Tap To Reveal Options
 
 A simple react component intended for use on mobile.
 
-## [Demo](http://enki-com.github.io/react-tap-to-reveal-options/)
+## [Demo](http://enkidevs.github.io/react-tap-to-reveal-options/)
 
 ## Usage
 
@@ -13,17 +13,17 @@ npm install react-tap-to-reveal-options
 
 ### Code
 ```javascript
-var Flippable = require('react-tap-to-reveal-options');
+import Flippable from 'react-tap-to-reveal-options';
 
-var options = ["One", "Two", "Three"];
+const options = ['One', 'Two', 'Three'];
 // or
-var options = [
-  {label: "One", key: "first"},
-  {label: "Two", key: "second"},
-  {label: "Three", key: "last"}
+const options = [
+  {label: 'One', key: 'first'},
+  {label: 'Two', key: 'second'},
+  {label: 'Three', key: 'last'}
 ];
 
-<Flippable options={options} callback={cb} selected={"first"}>
+<Flippable options={options} onSelect={cb} selected={'first'}>
   <div>
     Your content for front side
   </div>
@@ -71,4 +71,4 @@ function cb(selectedOption) {
 ```
 
 ### How to flip other items back to default state
-See the [example](https://github.com/enki-com/react-tap-to-reveal-options/blob/master/example/example.js).
+See the [example](https://github.com/enkidevs/react-tap-to-reveal-options/blob/master/example/example.js).

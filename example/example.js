@@ -22,9 +22,9 @@ var List = React.createClass({
         {DATA.map(function(item, index) {
           return (
             <Flippable key={item.name}
-                ref={'item-' + index}
-               resetSiblings={this.resetSiblings.bind(this, index)}
-                options={optionsArray} callback={alert.bind(window)}>
+              ref={'item-' + index}
+              onFlip={this.resetSiblings.bind(this, index)}
+              options={optionsArray} onSelect={alert.bind(window)}>
               <div className="name">{item.name}</div>
               <div className="phone">{item.phone}</div>
             </Flippable>
@@ -35,8 +35,8 @@ var List = React.createClass({
           return (
             <Flippable key={item.name}
                ref={'item-obj-' + index}
-               resetSiblings={this.resetSiblings.bind(this, 'obj-' + index)}
-               options={optionsObject} callback={alert.bind(window)}>
+               onFlip={this.resetSiblings.bind(this, 'obj-' + index)}
+               options={optionsObject} onSelect={alert.bind(window)}>
               <div className="name">{item.name}</div>
               <div className="phone">{item.phone}</div>
             </Flippable>

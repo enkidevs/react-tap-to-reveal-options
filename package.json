@@ -1,16 +1,16 @@
 {
   "name": "react-tap-to-reveal-options",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "React component to flip items in list and reveal options",
   "main": "index.js",
   "scripts": {
-    "build": "jsx src/ ./",
-    "buildExample": "browserify -t reactify example/example.js -o example/example.compiled.js",
+    "build": "babel src -d ./",
+    "buildExample": "browserify -t babelify example/example.js -o example/example.compiled.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/enki-com/react-tap-to-reveal-options.git"
+    "url": "https://github.com/enkidevs/react-tap-to-reveal-options.git"
   },
   "keywords": [
     "react",
@@ -20,13 +20,17 @@
   "author": "Arseny Zarechnev",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/enki-com/react-tap-to-reveal-options/issues"
+    "url": "https://github.com/enkidevs/react-tap-to-reveal-options/issues"
   },
-  "homepage": "https://github.com/enki-com/react-tap-to-reveal-options",
+  "homepage": "https://github.com/enkidevs/react-tap-to-reveal-options",
   "devDependencies": {
+    "babel": "6.3.26",
+    "babel-cli": "6.4.0",
+    "babel-preset-es2015": "6.3.13",
+    "babel-preset-react": "6.3.13",
+    "babel-preset-stage-0": "6.3.13",
+    "babelify": "7.2.0",
     "browserify": "^10.2.4",
-    "react": "^0.13.3",
-    "react-tools": "^0.13.3",
-    "reactify": "^1.1.1"
+    "react": "^0.13.3"
   }
 }
